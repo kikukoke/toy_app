@@ -1,0 +1,28 @@
+<p>新規登録</p>
+
+<div class="error_messages">
+        <% if @user.errors.full_messages %>
+                <% @user.errors.full_messages.each do |error_message| %>
+                    <div class="error_message">
+                    
+                        <p>
+                            <%= error_message %>
+                        </p>  
+                    </div>     
+                <% end %>
+        <% end%>  
+    </div>
+
+<%= form_for(@user, url: users_create_path ) do |f| %>
+
+    <%= f.text_field :name, :placeholder => "名前" %>
+
+    <%= f.text_field :email, :placeholder => "メールアドレス" %>
+
+    <%= f.password_field :password, :placeholder => "パスワード" %>
+
+    <%= f.password_field :password_confirmation, :placeholder => "パスワード（確認）" %>
+
+
+    <%= f.submit "登録" %>
+<% end %>
